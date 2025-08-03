@@ -1,3 +1,5 @@
+/* --- 基础和桌面端样式 --- */
+
 * {
   box-sizing: border-box;
 }
@@ -13,28 +15,26 @@ body {
 
 .whole-page {
   display: flex;
-  height: 100vh;
+  min-height: 100vh; /* [优化] 使用 min-height，防止内容溢出时布局被破坏 */
+  height: auto;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0; /* 在页面顶部和底部增加一些间距 */
 }
 
 .introduction {
-  height: auto;
   display: flex;
-  height: auto;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  text-align: center; /* 确保标题在小屏幕上居中 */
   margin-bottom: 30px;
 }
 
 .website-title {
   font-size: 2.5em;
-  /* 使用em单位，相对父元素的相对大小 */
   font-weight: bold;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  /* 添加一点文字阴影增加质感 */
 }
 
 .container {
@@ -43,7 +43,6 @@ body {
   width: 90%;
   max-width: 1200px;
   gap: 40px;
-  /*  使用 gap 属性来创建元素之间的间距，比 space-between 更现代 */
 }
 
 .left-box,
@@ -52,64 +51,95 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5vh;
-}
-
-.description,
-.website-title {
-  display: flex;
-}
-
-.container-footer {
-  margin-left: 0;
-  margin-top: 5%;
-  height: auto;
 }
 
 .input-text,
 .output-text {
-  width: 100%;
-  height: 30vh;
-  /* 30% 视窗高度 */
+  width: 100%; 
+  height: 30vh; 
+  min-height: 150px; /* [优化] 设置一个最小高度 */
   opacity: 0.8;
   border: none;
   resize: none;
-  margin-left: 10px;
-  width: 400px;
-  height: 150px;
   color: #333;
   font-size: 16px;
   border-radius: 15px;
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 300ms ease-in-out;
 }
 
 .input-text:hover,
 .output-text:hover {
-  background-color: rgb(104, 154, 198);
-  transform: scale(1.05);
-  /* [优化] 悬浮时放大，比改变透明度体验更好 */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 1); /* [优化] 悬浮时变为不透明白色，比蓝色更协调 */
+  transform: translateY(-5px); /* 悬浮时轻微上移，比放大效果更细腻 */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* 确保按钮居中 */
 }
 
 .encode-button,
 .decode-button {
-  margin-right: 15px;
-  margin-left: 15px;
+  margin: 0 10px;
   padding: 15px 32px;
-  display: inline-block;
   background-color: rgb(118, 173, 222);
+  color: white;
   border: none;
   border-radius: 30px;
   font-style: italic;
   font-size: 15px;
   cursor: pointer;
+  transition: all 300ms ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .encode-button:hover,
 .decode-button:hover {
   background-color: rgb(104, 154, 198);
-  transform: scale(1.05); /* [优化] 悬浮时放大，比改变透明度体验更好 */
+  transform: scale(1.05);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* [关键] --- 手机端适配样式 --- */
+/* 当屏幕宽度小于等于 768px 时，应用以下样式 */
+@media (max-width: 768px) {
+
+  .website-title {
+    font-size: 2em; /* 在手机上标题可以小一点 */
+  }
+
+  .container {
+    flex-direction: column; /* [核心] 将容器的排列方向从横向变为纵向 */
+    gap: 30px; /* 调整垂直方向的间距 */
+  }
+
+  .left-box,
+  .right-box {
+    margin-top: 0; /* 在垂直布局中，不再需要顶部边距 */
+    width: 100%; /* 确保盒子占满容器宽度 */
+  }
+  
+  .input-text,
+  .output-text {
+    height: 25vh; /* 在手机上可以适当减小文本框的高度 */
+  }
+
+  .button-container {
+    /* 在手机上，可以考虑让按钮也垂直排列 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 按钮之间的间距 */
+    width: 80%; /* 限制按钮容器宽度 */
+  }
+
+  .encode-button,
+  .decode-button {
+    margin: 0; /* 移除水平外边距 */
+    width: 100%; /* 让按钮宽度占满容器 */
+  }
 }
