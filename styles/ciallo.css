@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: #EEAECA;
+  background: radial-gradient(circle,
+      rgba(238, 174, 202, 1) 0%,
+      rgba(148, 187, 233, 1) 100%);
+}
+
+.whole-page {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introduction {
+  height: auto;
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.website-title {
+  font-size: 2.5em;
+  /* 使用em单位，相对父元素的相对大小 */
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 添加一点文字阴影增加质感 */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  max-width: 1200px;
+  gap: 40px;
+  /*  使用 gap 属性来创建元素之间的间距，比 space-between 更现代 */
+}
+
+.left-box,
+.right-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.description,
+.website-title {
+  display: flex;
+}
+
+.container-footer {
+  margin-left: 0;
+  margin-top: 5%;
+  height: auto;
+}
+
+.input-text,
+.output-text {
+  width: 100%;
+  height: 30vh;
+  /* 30% 视窗高度 */
+  opacity: 0.8;
+  border: none;
+  resize: none;
+  margin-left: 10px;
+  width: 400px;
+  height: 150px;
+  color: #333;
+  font-size: 16px;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 300ms ease-in-out;
+}
+
+.input-text:hover,
+.output-text:hover {
+  background-color: rgb(104, 154, 198);
+  transform: scale(1.05);
+  /* [优化] 悬浮时放大，比改变透明度体验更好 */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.encode-button,
+.decode-button {
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 15px 32px;
+  display: inline-block;
+  background-color: rgb(118, 173, 222);
+  border: none;
+  border-radius: 30px;
+  font-style: italic;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.encode-button:hover,
+.decode-button:hover {
+  background-color: rgb(104, 154, 198);
+  transform: scale(1.05); /* [优化] 悬浮时放大，比改变透明度体验更好 */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
